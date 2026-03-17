@@ -1,17 +1,5 @@
-'use client'
-
-import ChatMenu from '@/components/chat-menu/ChatMenu'
-import ChatWindow from '@/components/chat-window/ChatWindow'
-import Sidebar from '@/components/sidebar/Sidebar'
-import { useState } from 'react'
+import { redirect, RedirectType } from 'next/navigation'
 
 export default function Home() {
-	const [panelOpen, setPanelOpen] = useState<boolean>(false)
-	return (
-		<div className='mx-5 py-7 flex h-screen'>
-			<Sidebar />
-			<ChatWindow panelOpen={panelOpen} setPanelOpen={setPanelOpen} />
-			<ChatMenu panelOpen={panelOpen} />
-		</div>
-	)
+	return redirect('/chat/c1', RedirectType.push)
 }
