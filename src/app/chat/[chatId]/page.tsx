@@ -2,16 +2,23 @@
 
 import ChatMenu from '@/components/chat-menu/ChatMenu'
 import ChatWindow from '@/components/chat-window/ChatWindow'
-import Sidebar from '@/components/sidebar/Sidebar'
+import { useParams } from 'next/navigation'
 import { useState } from 'react'
 
-export default function Home() {
+const ChatPage = () => {
 	const [panelOpen, setPanelOpen] = useState<boolean>(false)
+	const params = useParams()
+
 	return (
-		<div className='mx-5 py-7 flex h-screen'>
-			<Sidebar />
-			<ChatWindow panelOpen={panelOpen} setPanelOpen={setPanelOpen} />
+		<>
+			<ChatWindow
+				chatId={params.chatId}
+				panelOpen={panelOpen}
+				setPanelOpen={setPanelOpen}
+			/>
 			<ChatMenu panelOpen={panelOpen} />
-		</div>
+		</>
 	)
 }
+
+export default ChatPage
